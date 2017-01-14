@@ -15,11 +15,11 @@
         android:id="@+id/sys_apps_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/fm_cancel"
+        android:layout_above="@+id/sys_app_cancel"
         tools:listitem="@layout/fragment_app" />
 
     <Button
-        android:id="@+id/fm_cancel"
+        android:id="@+id/sys_app_cancel"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,13 +33,13 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/fm_save"
+        android:id="@+id/sys_app_save"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/fm_cancel"
+        android:layout_alignTop="@+id/sys_app_cancel"
         android:layout_marginEnd="54dp"
         android:layout_marginRight="54dp"
         android:padding="10dp"
