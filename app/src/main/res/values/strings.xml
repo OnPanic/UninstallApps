@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">UninstallApps</string>
     <string name="action_settings">Settings</string>
+    <string name="runned_notification_content">Hope you are ok :)</string>
+    <string name="runned_notification_title">Apps uninstalled</string>
+
+    <string name="pref_runned_notification" translatable="false">pref_runned_notification</string>
 </resources>
