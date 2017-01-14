@@ -3,6 +3,7 @@ package org.onpanic.uninstallapps.adapters;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import org.onpanic.uninstallapps.R;
+import org.onpanic.uninstallapps.fragments.UninstallAppsList;
 import org.onpanic.uninstallapps.providers.AppsProvider;
 
 
@@ -21,11 +23,15 @@ public class AppsAdapter extends CursorRecyclerViewAdapter<AppsAdapter.ViewHolde
 
     private Context mContext;
     private ContentResolver mResolver;
+    private PackageManager mPM;
+    private UninstallAppsList.OnAppClickCallback mListener;
 
-    public AppsAdapter(Context context, Cursor cursor) {
+    public AppsAdapter(Context context, Cursor cursor, UninstallAppsList.OnAppClickCallback listener) {
         super(cursor);
         mContext = context;
+        mListener = listener;
         mResolver = mContext.getContentResolver();
+        mPM = mContext.getPackageManager();
     }
 
     @Override
@@ -53,12 +59,18 @@ public class AppsAdapter extends CursorRecyclerViewAdapter<AppsAdapter.ViewHolde
             }
         });
 
+        try {
+            viewHolder.mName.setText(mPM.getApplicationLabel(mPM.getApplicationInfo(name, 0)));
+            viewHolder.mImage.setImageDrawable(mPM.getApplicationIcon(name));
+        } catch (PackageManager.NameNotFoundException e) {
+            viewHolder.mName.setText(mContext.getString(R.string.invalid_package));
+            e.printStackTrace();
+        }
 
-        viewHolder.mName.setText(name);
         viewHolder.mName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mResolver.delete(AppsProvider.CONTENT_URI, "_ID=" + id, null);
+                mListener.deleteAppCallBack(id);
             }
         });
     }

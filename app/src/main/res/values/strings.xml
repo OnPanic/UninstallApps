@@ -10,6 +10,9 @@
     <string name="runned_notification_summary">Shows a notification after a trigger run</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="invalid_package">Invalid Package</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_deletion">Confirm deletion</string>
 
     <string name="pref_runned_notification" translatable="false">pref_runned_notification</string>
     <string name="pref_trigger_app" translatable="false">pref_trigger_app</string>

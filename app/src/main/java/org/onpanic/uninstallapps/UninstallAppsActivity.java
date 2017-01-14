@@ -9,12 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.onpanic.uninstallapps.Utils.RootUtils;
+import org.onpanic.uninstallapps.dialogs.DeleteAppDialog;
 import org.onpanic.uninstallapps.fragments.LockedByPermissions;
 import org.onpanic.uninstallapps.fragments.UninstallAppsList;
 import org.onpanic.uninstallapps.fragments.UninstallSettings;
+import org.onpanic.uninstallapps.providers.AppsProvider;
 
 
-public class UninstallAppsActivity extends AppCompatActivity {
+public class UninstallAppsActivity extends AppCompatActivity implements
+        UninstallAppsList.OnAppClickCallback {
+
     private MenuItem settingsIcon;
     private FragmentManager mFragmentManager;
 
@@ -84,5 +88,14 @@ public class UninstallAppsActivity extends AppCompatActivity {
         }
 
         transaction.commit();
+    }
+
+    @Override
+    public void deleteAppCallBack(int id) {
+        DeleteAppDialog dialog = new DeleteAppDialog();
+        Bundle arguments = new Bundle();
+        arguments.putInt(AppsProvider.App._ID, id);
+        dialog.setArguments(arguments);
+        dialog.show(getSupportFragmentManager(), "DeleteAppDialog");
     }
 }
