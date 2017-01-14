@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-
 import org.onpanic.uninstallapps.R;
 import org.onpanic.uninstallapps.ui.ConnectedAppEntry;
 

@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 
 import org.onpanic.uninstallapps.R;
 
-public class UninstallAppsList extends Fragment {
+public class SystemAppsList extends Fragment {
 
-    public UninstallAppsList() {
+    public SystemAppsList() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_uninstall_apps, container, false);
+        return inflater.inflate(R.layout.fragment_system_apps, container, false);
     }
 }
