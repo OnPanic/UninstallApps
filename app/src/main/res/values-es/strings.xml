@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Uninstall Apps</string>
+    <string name="allowed_trigger_app">Aplicación de activación permitida</string>
+    <string name="cancel">Cancelar</string>
+    <string name="allowed_trigger_app_summary">Selecciona qué aplicación está autorizada para enviar alertas de pánico</string>
+    <string name="confirm_deletion">Confirm deletion</string>
+    <string name="delete">Borrar</string>
+    <string name="none">Ninguna</string>
+    <string name="runned_notification">Notificar ejecución completada</string>
+    <string name="runned_notification_content">Espero que estés bien :)</string>
+    <string name="runned_notification_summary">Muestra una notificación después de un disparo</string>
+    <string name="runned_notification_title">Aplicaciones eliminadas</string>
+    <string name="save">Guardar</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="invalid_package">Paquete no válido</string>
+</resources>
