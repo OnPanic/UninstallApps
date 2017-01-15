@@ -8,9 +8,11 @@
 
     <ImageView
         android:id="@+id/sys_app_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/sys_app_name"
