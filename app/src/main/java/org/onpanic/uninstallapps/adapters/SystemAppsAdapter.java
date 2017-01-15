@@ -23,7 +23,6 @@ public class SystemAppsAdapter extends RecyclerView.Adapter<SystemAppsAdapter.vi
     private List<PackageInfo> availableApps;
     private PackageManager mManager;
     private Context mContext;
-    private CheckBox check;
 
     public SystemAppsAdapter(PackageManager pm, Context context) {
         selectedApps = new ArrayList<>();
@@ -36,9 +35,6 @@ public class SystemAppsAdapter extends RecyclerView.Adapter<SystemAppsAdapter.vi
     public SystemAppsAdapter.viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.sys_app_layout, parent, false);
-
-        check = (CheckBox) view.findViewById(R.id.sys_app_selected);
-
         return new viewHolder(view);
     }
 
@@ -46,7 +42,7 @@ public class SystemAppsAdapter extends RecyclerView.Adapter<SystemAppsAdapter.vi
     public void onBindViewHolder(final SystemAppsAdapter.viewHolder holder, int position) {
         final PackageInfo info = availableApps.get(position);
 
-        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.selected.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
