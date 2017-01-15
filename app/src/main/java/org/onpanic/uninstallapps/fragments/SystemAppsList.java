@@ -33,7 +33,8 @@ public class SystemAppsList extends Fragment {
         View v = inflater.inflate(R.layout.fragment_system_apps, container, false);
 
         mAdapter = new SystemAppsAdapter(pm, mContext);
-        RecyclerView list = (RecyclerView) v.findViewById(R.id.apps_list);
+
+        RecyclerView list = (RecyclerView) v.findViewById(R.id.sys_apps_list);
         list.setLayoutManager(new LinearLayoutManager(v.getContext()));
         list.setAdapter(mAdapter);
 
@@ -41,7 +42,7 @@ public class SystemAppsList extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getFragmentManager().popBackStack();
+                getFragmentManager().popBackStack();
             }
         });
 
@@ -55,7 +56,7 @@ public class SystemAppsList extends Fragment {
                     values.put(AppsProvider.App.PACKAGE_NAME, app);
                     cr.insert(AppsProvider.CONTENT_URI, values);
                 }
-                getActivity().getFragmentManager().popBackStack();
+                getFragmentManager().popBackStack();
             }
         });
 

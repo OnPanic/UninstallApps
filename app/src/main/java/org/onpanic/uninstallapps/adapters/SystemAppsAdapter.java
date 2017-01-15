@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class SystemAppsAdapter extends RecyclerView.Adapter<SystemAppsAdapter.vi
     private List<PackageInfo> availableApps;
     private PackageManager mManager;
     private Context mContext;
+    private CheckBox check;
 
     public SystemAppsAdapter(PackageManager pm, Context context) {
         selectedApps = new ArrayList<>();
@@ -34,12 +36,27 @@ public class SystemAppsAdapter extends RecyclerView.Adapter<SystemAppsAdapter.vi
     public SystemAppsAdapter.viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.sys_app_layout, parent, false);
+
+        check = (CheckBox) view.findViewById(R.id.sys_app_selected);
+
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final SystemAppsAdapter.viewHolder holder, int position) {
-        PackageInfo info = availableApps.get(position);
+        final PackageInfo info = availableApps.get(position);
+
+        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    selectedApps.add(info.packageName);
+                } else {
+                    selectedApps.remove(selectedApps.lastIndexOf(info.packageName));
+                }
+            }
+        });
+
         try {
             holder.name.setText(mManager.getApplicationLabel(mManager.getApplicationInfo(info.packageName, 0)));
             holder.icon.setImageDrawable(mManager.getApplicationIcon(info.packageName));
