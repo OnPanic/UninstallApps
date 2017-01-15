@@ -8,7 +8,10 @@
     <string name="allowed_trigger_app">Allowed trigger app</string>
     <string name="runned_notification">Notify run complete</string>
     <string name="runned_notification_summary">Shows a notification after a trigger run</string>
+    <string name="grant">Grant</string>
     <string name="save">Save</string>
+    <string name="root_is_needed">Root is needed</string>
+    <string name="not_rooted">Device is no Rooted</string>
     <string name="cancel">Cancel</string>
     <string name="invalid_package">Invalid Package</string>
     <string name="delete">Delete</string>

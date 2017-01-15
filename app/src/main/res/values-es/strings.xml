@@ -14,4 +14,7 @@
     <string name="save">Guardar</string>
     <string name="action_settings">Ajustes</string>
     <string name="invalid_package">Paquete no válido</string>
+    <string name="grant">Conceder</string>
+    <string name="not_rooted">El dispositivo no tiene acceso root</string>
+    <string name="root_is_needed">Se necesita root</string>
 </resources>

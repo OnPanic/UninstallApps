@@ -17,7 +17,8 @@ import org.onpanic.uninstallapps.providers.AppsProvider;
 
 
 public class UninstallAppsActivity extends AppCompatActivity implements
-        UninstallAppsList.OnAppClickCallback {
+        UninstallAppsList.OnAppClickCallback,
+        LockedByPermissions.OnRequestRoot {
 
     private MenuItem settingsIcon;
     private FragmentManager mFragmentManager;
@@ -81,10 +82,12 @@ public class UninstallAppsActivity extends AppCompatActivity implements
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         String su = RootUtils.getSuPath();
 
-        if (su != null && RootUtils.checkPermissions(su)) {
-            transaction.replace(R.id.fragment_container, new UninstallAppsList());
+        if (su == null || !RootUtils.checkPermissions(su)) {
+            LockedByPermissions lockedByPermissions = new LockedByPermissions();
+            lockedByPermissions.setIsRooted((su != null));
+            transaction.replace(R.id.fragment_container, lockedByPermissions);
         } else {
-            transaction.replace(R.id.fragment_container, new LockedByPermissions());
+            transaction.replace(R.id.fragment_container, new UninstallAppsList());
         }
 
         transaction.commit();
@@ -97,5 +100,10 @@ public class UninstallAppsActivity extends AppCompatActivity implements
         arguments.putInt(AppsProvider.App._ID, id);
         dialog.setArguments(arguments);
         dialog.show(getSupportFragmentManager(), "DeleteAppDialog");
+    }
+
+    @Override
+    public void requestRoot() {
+        initFragment();
     }
 }
